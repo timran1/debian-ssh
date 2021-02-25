@@ -18,7 +18,7 @@ RUN mkdir -p /var/run/sshd && sed -i "s/UsePrivilegeSeparation.*/UsePrivilegeSep
 ## Add user to 'staff' group, granting them write privileges to /usr/local/lib/R/site.library
 ## User should also have & own a home directory, but also be able to sudo
 RUN useradd docker \
-        && passwd -d docker \
+        && echo "linuxpassword" | passwd --stdin docker \
         && mkdir /home/docker \
         && chown docker:docker /home/docker \
         && addgroup docker staff \
